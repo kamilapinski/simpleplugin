@@ -1,18 +1,24 @@
-<!-- Plugin Configuration File. Read more: https://plugins.jetbrains.com/docs/intellij/plugin-configuration-file.html -->
 <idea-plugin>
-    <id>com.github.kamilapinski.simpleplugin</id>
-    <name>simpleplugin</name>
-    <vendor>kamilapinski</vendor>
+    <id>com.github.kamilapinski.motivationalquoteplugin</id>
+    <name>Motivational Quote of the Day</name>
+    <version>1.0</version>
+    <vendor email="you@github.kamilapinski.com" url="http://github.kamilapinski.com">Your Name</vendor>
 
-    <depends>com.intellij.modules.platform</depends>
-
-    <resource-bundle>messages.MyBundle</resource-bundle>
-
-    <extensions defaultExtensionNs="com.intellij">
-        <toolWindow factoryClass="com.github.kamilapinski.simpleplugin.toolWindow.MyToolWindowFactory" id="MyToolWindow"/>
-    </extensions>
+    <description>
+        A simple plugin to display a motivational quote every day.
+    </description>
 
     <applicationListeners>
-        <listener class="com.github.kamilapinski.simpleplugin.listeners.MyApplicationActivationListener" topic="com.intellij.openapi.application.ApplicationActivationListener"/>
+        <listener class="com.github.kamilapinski.motivationalquoteplugin.QuoteAppComponent"
+                  topic="com.intellij.ide.AppLifecycleListener"/>
     </applicationListeners>
+
+    <actions>
+        <action id="com.github.kamilapinski.motivationalquoteplugin.ShowQuoteAction"
+                class="com.github.kamilapinski.motivationalquoteplugin.ShowQuoteAction"
+                text="Show Motivational Quote"
+                description="Displays a motivational quote.">
+            <add-to-group group-id="MainToolbar" anchor="last"/>
+        </action>
+    </actions>
 </idea-plugin>
